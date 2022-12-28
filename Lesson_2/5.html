@@ -32,22 +32,7 @@ Infinity делать не нужно, однако, в случае если б
 <script>
     "use strict";
 
-    /**
-     * функция вычисляет разность 2-х переданных функции чисел, функция вычитает из большего числа меньшее
-     * @param {number} a первое число
-     * @param {number} b второе число
-     * @returns {number} возвращает результат разности 2-х чисел
-     */
-    function dif(a, b) {
-        if (a > b)
-            return a - b
-        else if (b > a)
-            return b - a
-        else if (a === b)
-            return 0
-    }
 
-    // написал этот вариант т.к. не до конца понял суть.
     /**
      * функция вычисляет разность 2-х переданных функции чисел, функция вычитает из большего числа меньшее
      * @param {number} a первое число
@@ -55,10 +40,10 @@ Infinity делать не нужно, однако, в случае если б
      * @returns {number} возвращает результат разности 2-х чисел
      */
     function dif2(a, b) {
-        if (a > b)
-            return a - b
-        else if (a === b)
-            return 0
+        if (a < b) {
+            return undefined;
+        }
+        return a - b;
 
     }
 
@@ -70,7 +55,7 @@ Infinity делать не нужно, однако, в случае если б
      * @returns {number} возвращает результат суммы 2-х чисел
      */
     function sum(a, b) {
-        return a + b
+        return a + b;
     }
 
     // умножение
@@ -81,7 +66,7 @@ Infinity делать не нужно, однако, в случае если б
      * @returns {number} возвращает результат умножения 2-х чисел
      */
     function mul(a, b) {
-        return a * b
+        return a * b;
     }
 
     // деление
@@ -92,19 +77,23 @@ Infinity делать не нужно, однако, в случае если б
      * @returns {number} возвращает результат деления 2-х чисел
      */
     function div(a, b) {
-        return a / b
+        return a / b;
     }
 
     function mathOperation(arg1, arg2, operation) {
-        if (operation === '+')
-            return sum(arg1, arg2)
-        else if (operation === '-')
-            return dif2(arg1, arg2)
-        else if (operation === '*')
-            return mul(arg1, arg2)
-        else if (operation === '/')
-            return div(arg1, arg2)
-        else return NaN
+        if (operation === '+') {
+            return sum(arg1, arg2);
+        }
+        if (operation === '-') {
+            return dif2(arg1, arg2);
+        }
+        if (operation === '*') {
+            return mul(arg1, arg2);
+        }
+        if (operation === '/') {
+            return div(arg1, arg2);
+        }
+        return NaN;
 
     } 
 

@@ -24,12 +24,14 @@
     function calcNumber() {
         const a = +prompt('введите первое число: ')
         const b = +prompt('введите в второе число: ')
-        if (a >= 0 && b >= 0)
+        if (a > 0 && b > 0) {
             return a - b
-        else if (a < 0 && b < 0)
+        }
+        else if (a < 0 && b < 0) {
             return a * b
-        else if (a < 0 || a >= 0 && b < 0 || b >= 0)
-            return a + b
+        }
+        else if (a < 0 && b > 0 || a > 0 && b < 0) { return a + b }
+        else { return null }
     }
 
     //console.log(calcNumber())
@@ -37,12 +39,14 @@
 
     // вариант с передачей глобальных переменных функции
     function calcNumber2(a, b) {
-        if (a >= 0 && b >= 0)
+        if (a > 0 && b > 0) {
             return a - b
-        else if (a < 0 && b < 0)
+        }
+        else if (a < 0 && b < 0) {
             return a * b
-        else if (a < 0 || a >= 0 && b < 0 || b >= 0)
-            return a + b
+        }
+        else if (a < 0 && b > 0 || a > 0 && b < 0) { return a + b }
+        else { return null }
     }
 
     //const a = +prompt('введите первое число: ')
@@ -51,20 +55,7 @@
     //console.log(calcNumber2(a, b))
     //alert(calcNumber2(a, b))
 
-    // возможно есть какая-то симантическая ошика с 0 поэтому на всякий случай написал такой вариант.
-    function calcNumber3() {
-        const a = +prompt('введите первое число: ')
-        const b = +prompt('введите в второе число: ')
-        if (a > 0 && b > 0)
-            return a - b
-        else if (a < 0 && b < 0)
-            return a * b
-        else if (a < 0 || a > 0 && b < 0 || b > 0)
-            return a + b
-        else return null
-    }
-
-    //alert(calcNumber3())
+    
   
 </script>
 </body>

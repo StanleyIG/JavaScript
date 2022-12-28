@@ -46,9 +46,9 @@
             return 0
     }
 
-    console.log(dif(5, 3))
-    console.log(dif(3, 5))
-    console.log(dif(5, 5))
+    //console.log(dif(5, 3))
+    //console.log(dif(3, 5))
+    //console.log(dif(5, 5))
 
     // написал этот вариант т.к. не до конца понял суть.
 
@@ -59,10 +59,10 @@
      * @returns {number} возвращает результат разности 2-х чисел
      */
     function dif2(a, b) {
-        if (a > b)
-            return a - b
-        else if (a === b)
-            return 0
+        if (a < b) {
+            return undefined;
+        }
+        return a - b;
        
     }
 
