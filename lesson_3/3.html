@@ -31,8 +31,12 @@
 
 
     products.forEach((val) => {
-        console.log(val.price - (val.price / 100 * 15));
+        val.price = val.price - (val.price / 100 * 15);
+        //console.log(val)
     });
+    console.log(products)
+
+    
 
 </script>
 </body>

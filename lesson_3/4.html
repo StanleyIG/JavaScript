@@ -50,12 +50,21 @@
     */
 
     const result = products.filter(function (product) {
-        if ('photos' in product && product.photos.length !== 0) {
-            return product.photos;
-        }
+        //if ('photos' in product && product.photos.length !== 0) {
+        return product.photos && product.photos.length !== 0;
+        
     });
-
     console.log(result);
+
+    // вариант 2, с помощью стрелочной функции
+    const result2 = products.filter(product => {
+        return product.photos && product.photos.length !== 0;
+
+    });
+    console.log(result2);
+    
+
+    
 
     products.sort(function (a, b) {
         return a.price - b.price;
