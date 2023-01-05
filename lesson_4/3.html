@@ -43,8 +43,25 @@
         };
     }
 
-    const num = prompt('введите целое число от 0 до 1000: ');
+    const num = +prompt('введите целое число от 0 до 1000: ');
     console.log(getDigitsOfNumber(num));
+
+    console.log('Вариант #2')
+    // вариант #2
+    function getDigitsOfNumber2(userNumber) {
+        if (userNumber > 999 || userNumber < 0 || !Number.isInteger(userNumber)) {
+            console.error('введите целое число в диапазоне от 0 до 1000');
+            return {};
+        }
+        return {
+            units: Math.trunc(userNumber % 10),
+            dozens: Math.trunc(userNumber / 10 % 10),
+            hundreds: Math.trunc(userNumber / 10 / 10 % 10)
+        };
+    }
+
+    
+    console.log(getDigitsOfNumber2(num));
     
     
 </script>

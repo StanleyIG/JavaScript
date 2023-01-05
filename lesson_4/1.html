@@ -27,26 +27,31 @@
         this.price = price;
     }
     ProductES5.prototype.make25Discount = function () {
-        console.log(`стоимость "${this.nameProd}" уменьшена на 25% и состовляет: ${this.price - (this.price / 100 * 25)}`)
+        this.price = this.price - (this.price / 100 * 25)
+        return this.price;
     };
 
     const product = new ProductES5('iPhone 13', 70000);
-    product.make25Discount();
+    console.log(`стоимость "${this.nameProd}" уменьшена на 25% и состовляет: ${product.make25Discount()}`);
+    console.log(product.price);
 
     console.log('ES6');
 
     class ProductES6 {
-        constructor(nameProd2, price2) {
-            this.nameProd2 = nameProd2;
-            this.price2 = price2;
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
         }
         make25Discount() {
-            console.log(`стоимость "${this.nameProd}" уменьшена на 25% и состовляет: ${this.price2 - (this.price2 / 100 * 25)}`)
+            this.price = this.price - (this.price / 100 * 25)
+            return this.price;
         }
     }
 
-    const product2 = new ProductES6('iPhone 14', 100000);
-    product2.make25Discount();
+    const productNew = new ProductES6('iPhone 14', 100000);
+    //productNew.make25Discount();
+    console.log(`стоимость "${productNew.name}" уменьшена на 25% и состовляет: ${productNew.make25Discount()}`);
+    console.log(productNew.price);
     
 </script>
 </body>
