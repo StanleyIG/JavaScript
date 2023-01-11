@@ -52,18 +52,24 @@
   3. Найти все элементы на странице с классом "card-link", которые лежат в
   элементе с классом "card-body" и вывести полученную коллекцию в консоль.
    */
+
+    /*
     const crdbodyEl = document.querySelectorAll('.card-body');
     for (let i = 0; i < crdbodyEl.length; i++) {
         if (crdbodyEl[i].className === 'card-body') {
             console.log(crdbodyEl[i].querySelectorAll('.ссылка'));    
         }  
     }
+    */
+
+    console.log(document.querySelectorAll('.card-body .card-link'));
 
   /*
   4. Найти первый попавшийся элемент на странице у которого есть атрибут
   data-number со значением 50 и вывести его в консоль.
    */
 
+    /*
     const dateEl = document.querySelectorAll('body')
     for (let i = 0; i < dateEl.length; i++) {
         const res = dateEl[i].querySelectorAll('[data-number = "50"]'); // нашёл только такой вариант.
@@ -75,31 +81,41 @@
         }
         
     }
+    */
 
-  /*
+    console.log(document.querySelector('[data-number = "50"]'))
+
+    /*
   5. Выведите содержимое тега title в консоль.
    */
 
+    /*
     const tit = document.querySelector('title');
     console.log(tit.textContent);
+    */
+
+    console.log(document.title);
+
   /*
   6. Получите элемент с классом "card-title" и выведите его родительский узел
   в консоль.
    */
 
+    
     const crdtitEl = document.querySelector('.card-title');
     console.log(crdtitEl.parentNode);
 
+   
   /*
   7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
   тег в начало элемента, который имеет класс "card".
    */
 
-    const crd = document.querySelector('.card')
+    const crd = document.querySelector('.card');
     //innerHTML = '<p>"Привет"</p>';
-    const p = document.createElement('p')
+    const p = document.createElement('p');
     //p.textContent("Привет")
-    p.innerHTML = "Привет"
+    p.innerHTML = "Привет";
     crd.insertBefore(p, crd.children[0])
   /*
   8. Удалите тег h6 на странице.

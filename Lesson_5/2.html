@@ -47,7 +47,7 @@
     const btnEl = document.querySelectorAll('.btn')
     for (const i of btnEl) {
         i.classList.toggle('btn-secondary');
-        i.classList.toggle('btn-secondary');
+        //i.classList.toggle('btn-secondary');
     }
 
   /*
@@ -66,23 +66,31 @@
     <a href="#">link</a>
    */
 
+    /*
     const divEl = document.querySelectorAll('div')
     for (const i of divEl) {
-        if (i.className == 'dropdown')
-            i.insertAdjacentHTML('afterbegin', '<a href="#">link</a>');
+        if (i.className == 'dropdown') {
+            i.insertAdjacentHTML('afterend', '<a href="#">link</a>');
+        }
     }
+    */
+
+    document
+        .querySelector('div.dropdown')
+        .insertAdjacentHTML('afterend', '<a href="#">link</a>');
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
    */
 
-    const idEl = document.querySelector('#dropdownMenuButton').id = 'superDropdown';
+    document.querySelector('#dropdownMenuButton').id = 'superDropdown';
    
   /*
   6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
    */
 
+    /*
     const dataEl = document.querySelectorAll('body')
     for (let i = 0; i < dataEl.length; i++) {
         const res = dataEl[i].querySelectorAll('[aria-labelledby = "dropdownMenuButton"]');
@@ -90,16 +98,26 @@
             i.dataset.dd = '3';
         }
     }
-   
+    */
+
+    //только 1 элемент
+    document
+        .querySelector('[aria-labelledby="dropdownMenuButton"]')
+        .dataset
+        .dd = "3";
 
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
    */
 
+    /*
     const reElDrpTgl = document.querySelectorAll('.dropdown-toggle');
     for (const i of reElDrpTgl) {
         i.removeAttribute('type')
     }
+    */
+    // сделать только для одного элемента
+    document.querySelector('.dropdown-toggle').removeAttribute('type');
 
   /*
   8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого

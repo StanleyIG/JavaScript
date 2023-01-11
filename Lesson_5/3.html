@@ -58,7 +58,7 @@
   */
     
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('все теги прогрузились')
+        console.log('все теги прогрузились');
     });
     
   /*
@@ -67,7 +67,7 @@
   */
    
     window.addEventListener('load', () => {
-        console.log('страница загрузилась')
+        console.log('страница загрузилась');
     });
     
   /*
@@ -80,24 +80,50 @@
   Необходимо использовать делегирование.
   */
 
-
-
+    /*
+     * вариант 1
     const elem = document.querySelectorAll('body') 
     for (const el of elem) {
         for (const i of el.children) {
             if (i.className === 'super_element') {
                 i.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'BUTTON')
-                        console.log(`Тэг: ${i.tagName.toLowerCase()}. Класс "${i.className}" присутствует в элементе "${i.getAttributeNames(i)}"`)
+                    //if (event.target.tagName === 'BUTTON')
+                   console.log(`Тэг: ${i.tagName.toLowerCase()}. Класс "${i.className}" присутствует в элементе "${event.target.tagName.toLowerCase()}"`);
                 });
             }
             else {
                 i.addEventListener('click', () => {
-                    console.log(`Тэг: ${i.tagName.toLowerCase()}. Класс "super_element" отсутсвует в элементе "${i.getAttributeNames(i)}"`)
+                    console.log(`Тэг: ${i.tagName.toLowerCase()}. Класс "super_element" отсутсвует в элементе "${event.target.tagName.toLowerCase()}"`);
                 });
             }
         }
     }
+    /*
+    
+    /*
+    // вариант 2
+    document.addEventListener('click', event => {
+        const containStr = event.target.classList.contains('super_element');
+        if (containStr) {
+            console.log(`Класс "super_element" присутсвует в элементе "${event.target.tagName.toLowerCase()}".`);
+        }
+        else {
+            console.log(`Класс "super_element" отсутсвует в элементе "${event.target.tagName.toLowerCase()}".`);
+        }        
+    });
+    */
+
+   // Вариант 3. Лучший вариант, менее дорогостоящий и более лаконичный.
+    
+    document.addEventListener('click', event => {
+        const containStr = event.target.classList.contains('super_element')
+            ? 'присутствует' : 'отсутствует';
+        console.log(`Класс "super_element" ${containStr} в элементе "${event.target.tagName.toLowerCase()}".`);
+    });
+    
+
+    
+
 
   /*
   4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение:
@@ -118,7 +144,7 @@
   Необходимо использовать делегирование.
    */
 
-    
+    /*
     const elemUl = document.querySelectorAll('ul')
     for (const el of elemUl) {
         for (const i of el.children) {
@@ -129,37 +155,65 @@
             });
         }
     }
+    */
+
+    
+    const ulElem = document.querySelector('ul');
+    ulElem.addEventListener('click', (event) => {
+        if (event.target.tagName !== 'BUTTON') {
+            return;
+        }
+        console.log(event.target.textContent);
+    });
+    
     
   /*
   6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и только
   потом выводится текст из 3 задания, если мы кликаем по кнопкам в ul?
   Ответ необходимо написать здесь же, под этим комментарием, своими словами.
   */
-    // возможно потому что на кнопки ul навешено свое событие, оно в приоритете чем то, которое исполняется
-    // в строке else кода из задания 3.
+    /*
+    Мы в задании 3 и 5 повесили события на разные теги, в задании 3 на document,
+        в задании 5 на тег ul.Событие при клике всплывает после погружения, то есть
+  идет от элемента по которому был клик в родительские элементы и нам сначала
+  встретиться тег ul и только потом document, поэтому и события выполняются в
+  таком порядке.
+  Когда мы вешаем событие на родительский элемент и обрабатываем события детей
+  этого элемента - это называется делегированием события.
+  */
 
   /*
   7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
    */
 
     //const style = document.body.style.background = color;
-    
+
+    /*
     const ulEl = document.querySelectorAll('ul');
     for (let i = 0; i < ulEl.length; i++) {
         const res = ulEl[i].children
         for (let i = 0; i < res.length; i++) {
-            console.log(res[i])
+            //console.log(res[i])
             if (i % 2 === 0) {
                 res[i].children[0].style.background = 'red';
             }
             
         }
     }
+    */
+
+    // лучший вариант
+    document
+        .querySelectorAll('li:nth-child(2n)')
+        .forEach(el => el.children[0].style.backgroundColor = 'red');
+
+    /*
+     :nth-child(an+b) – расширение предыдущего селектора через указание номера потомка 
+     формулой, где a, b – константы, а под n подразумевается любое целое число. Этот 
+     псевдокласс будет фильтровать все элементы, которые попадают под формулу при каком-либо n. 
+     Например: - :nth-child(2n) даст элементы номер 2, 4, 6 …, то есть чётные.
+     */ 
    
-    
-
-
-    //window.addEventListener("load", function () { changeBackground('red') });
 
 </script>
 </body>
