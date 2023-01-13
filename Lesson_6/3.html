@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <style>
+    i {
+      font-size: 50px;
+    }
+    .golden {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+<!--
+Необязательное задание.
+
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
+-->
+
+<div class="stars_container">
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+</div>
+
+<script>
+  "use strict";
+
+  /*
+  1. При наведении на любую из звезд, данной звезде должен ставиться класс
+  golden, также такой класс должен ставиться всем звездам до нее слева.
+  */
+    // всётаки я допетрил как этот рейтинг сделать, интересное задание)
+ 
+    let starsCont = document.querySelector('.stars_container');
+    let starEl = document.querySelectorAll('.fas.fa-star')
+    const res = []
+    starsCont.addEventListener('mouseover', event => {
+        if (event.target.tagName === 'I') {
+            const indexEl = event.target
+            for (let i = 0; i < starEl.length; i++) {
+                res.push(i)
+                if (starEl[i] === indexEl) {
+                    const result = res.slice(0, i + 1);
+                    for (let i = 0; i < result.length; i++) {
+                        starEl[i].classList.add('golden')
+                    }
+                }
+              
+            }
+            
+        }
+        
+    });
+
+  /*
+  2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
+  задания должны быть удалены.
+   */
+
+    starsCont.addEventListener('mouseout', event => {
+        if (event.target.tagName === 'I') {
+            const indexElRe = event.target
+            for (let i = 0; i < starEl.length; i++) {
+                res.push(i)
+                if (starEl[i] === indexElRe) {
+                    const result2 = res.slice(0, i + 1);
+                    for (let i = 0; i < result2.length; i++) {
+                        starEl[i].classList.remove('golden')
+                    }
+                }
+
+            }
+
+        }
+    });
+
+  /*
+  3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
+  звезды (временно могут становиться черными). Почему так? Напишите словами.
+  Можем ли мы это исправить? Если да, то предложите решение.
+  */
+    /**
+     Когда курсор выходит из области тега срабатывает событие mouseout и class golden удаляется, соответсвенно
+     элемент становится не стилизованный до тех пор пока не сработает событие mouseover.
+     Решение по тому как это исправить я пока не нашёл)
+     */
+    
+
+
+</script>
+</body>
+</html>
