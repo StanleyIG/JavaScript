@@ -40,11 +40,11 @@
     // всётаки я допетрил как этот рейтинг сделать, интересное задание)
  
     let starsCont = document.querySelector('.stars_container');
-    let starEl = document.querySelectorAll('.fas.fa-star')
-    const res = []
+    let starEl = document.querySelectorAll('.fas.fa-star');
+    const res = [];
     starsCont.addEventListener('mouseover', event => {
         if (event.target.tagName === 'I') {
-            const indexEl = event.target
+            const indexEl = event.target;
             for (let i = 0; i < starEl.length; i++) {
                 res.push(i)
                 if (starEl[i] === indexEl) {
@@ -67,7 +67,7 @@
 
     starsCont.addEventListener('mouseout', event => {
         if (event.target.tagName === 'I') {
-            const indexElRe = event.target
+            const indexElRe = event.target;
             for (let i = 0; i < starEl.length; i++) {
                 res.push(i)
                 if (starEl[i] === indexElRe) {

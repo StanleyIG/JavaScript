@@ -66,8 +66,9 @@
   также должен меняться.
   */
 
+    const spnEl = document.querySelector('span');
     document.querySelector('#from').addEventListener('input', event => {
-        document.querySelector('span').textContent = event.target.value //document.querySelector('input').value
+        spnEl.textContent = event.target.value; //document.querySelector('input').value
     });
     
 
@@ -78,8 +79,8 @@
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
 
+    const messageEl = document.querySelector('.message');
     document.querySelector('.messageBtn').addEventListener('click', () => {
-        const messageEl = document.querySelector('.message');
         messageEl.classList.add('animate__animated', 'animate__fadeInLeftBig')
         messageEl.style.cssText = 'visibility: visible';
     });
@@ -97,19 +98,53 @@
    */
 
     const form = document.querySelector('form');
+    const formEls = form.querySelectorAll('input, select');
     form.addEventListener('submit', event => {
-        const inputEl = document.querySelector('input.form-control')
-        const selectEl = document.querySelector('select.form-control')
-        if (inputEl.value === '') {
-            event.preventDefault();
-            inputEl.classList.add('error')
-            selectEl.classList.add('error')
+        formEls.forEach(formEl => {
+            if (formEl.value === '') {
+                formEl.classList.add('error');
+                event.preventDefault();
+            }
+            
+        });
+    });
+    form.addEventListener('input', event => {
+        //вар. 1
+        /*
+        if (!event.target.classList.contains('form-control')) {
+            return;
+        }
+        else if (event.target.value === '') {
+            event.target.classList.add('error')
         }
         else {
-            inputEl.classList.remove('error')
-            selectEl.classList.remove('error')
+            event.target.classList.remove('error')
         }
+        */
+        //вар. 2
+        /*
+        formEls.forEach(formEl => {
+            if (formEl.value) {
+                formEl.classList.remove('error')
+            }
+            else {
+                formEl.classList.add('error')
+            }
+            */
+
+        });
+        
+        //вар. 3
+        if (!event.target.classList.contains('form-control')) {
+            return;
+        }
+        event.target.value === ''
+            ? event.target.classList.add('error')
+            : event.target.classList.remove('error');
+            
     });
+
+    
 
   
 

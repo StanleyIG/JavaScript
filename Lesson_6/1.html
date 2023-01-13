@@ -44,7 +44,7 @@
    */
 
     document.querySelectorAll('.productName').forEach((prdName) => {
-        prdName.style.fontSize = '24px'
+        prdName.style.fontSize = '24px';
     });
 
   /*
@@ -52,7 +52,7 @@
    */
 
     document.querySelectorAll('.product').forEach((prdName) => {
-        prdName.style.marginRight = '50px' 
+        prdName.style.marginRight = '50px';
     });
 
   /*
@@ -73,6 +73,7 @@
         if (event.target.tagName === 'BUTTON') {
             event.target.textContent = 'Добавлено';
             event.preventDefault();
+            event.target.disabled = true;
         }
     });
 
@@ -112,8 +113,8 @@
     // вариант 2
     const origEl = document.querySelectorAll('.product');
     const newElem = origEl[origEl.length - 1].cloneNode(true);
-    newElem.querySelectorAll('div img')[0].src = 'https://loremflickr.com/200/300/goods?lock=37';
-    newElem.querySelectorAll('div')[0].textContent = 'Товар 4';
+    newElem.querySelector('div img').src = 'https://loremflickr.com/200/300/goods?lock=37';
+    newElem.querySelector('div').textContent = 'Товар 4';
 
     const oldElem = origEl[origEl.length - 1];
     oldElem.replaceWith(newElem);
@@ -129,7 +130,7 @@
    */
 
     setTimeout(() => {
-        const remEl = document.querySelector('div')
+        const remEl = document.querySelector('div');
         remEl.remove(remEl)
     }, 2000);
    
