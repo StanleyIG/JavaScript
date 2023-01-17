@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+  <style>
+    .product {
+      width: 200px;
+      padding: 10px;
+      float: left;
+      margin-right: 30px;
+      box-shadow: 0 0 4px black;
+    }
+  </style>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
+-->
+<div class="product">
+  <div class="productName">Товар 1</div>
+  <img src="https://loremflickr.com/200/300/goods?lock=2" alt="">
+  <button>В корзину</button>
+</div>
+<div class="product">
+  <div class="productName">Товар 2</div>
+  <img src="https://loremflickr.com/200/300/goods?lock=12" alt="">
+  <button>В корзину</button>
+</div>
+<div class="product">
+  <div class="productName">Товар 3</div>
+  <img src="https://loremflickr.com/200/300/goods?lock=33" alt="">
+  <button>В корзину</button>
+</div>
+
+<script>
+  "use strict";
+
+  /*
+  1. Установите всем элементам с классом "productName" размер шрифта 24px.
+   */
+
+    document.querySelectorAll('.productName').forEach((prdName) => {
+        prdName.style.fontSize = '24px';
+    });
+
+  /*
+  2. Установите всем элементам с классом "product" внешний отступ справа 50px.
+   */
+
+    document.querySelectorAll('.product').forEach((prdName) => {
+        prdName.style.marginRight = '50px';
+    });
+
+  /*
+  3. При клике на кнопку "В корзину" название кнопки должно поменяться на
+  "Добавлено" и кнопка должна стать неактивной.
+   */
+    // в образовательных целях добавил 2 способа.
+    /*
+     document.querySelectorAll('button').forEach((btnEl) => {
+        btnEl.addEventListener('click', event => {
+            event.target.textContent = 'Добавлено';
+            event.preventDefault();
+        })
+    });
+     */
+
+    document.addEventListener('click', event => {
+        if (event.target.tagName === 'BUTTON') {
+            event.target.textContent = 'Добавлено';
+            event.preventDefault();
+            event.target.disabled = true;
+        }
+    });
+
+  /*
+  4. Создайте полную (глубокую) копию элемента с классом product, измените в
+  этой копии путь до картинки на:
+  https://loremflickr.com/200/300/goods?lock=37
+  Поставьте название товара в данной копии "Товар 4" и замените последний
+  отображенный товар на странице на созданную копию. У данной копии также
+  должен правильно работать код из 3-го задания.
+   */
+
+
+    function newEl() {
+        const copy = document.querySelectorAll('.product');
+        for (let i = 0; i < copy.length; i++) {
+            const deepCopy = copy[i].cloneNode(true)
+            deepCopy.querySelectorAll('div img')[0].src = 'https://loremflickr.com/200/300/goods?lock=37'
+            deepCopy.querySelectorAll('div')[0].textContent = 'Товар 4'
+            if (i === copy.length - 1) {
+                return deepCopy;
+            }
+        }
+    }
+
+    function oldEl() {
+        const copy = document.querySelectorAll('.product');
+        for (let i = 0; i < copy.length; i++) {
+            if (i === copy.length - 1) {
+                return copy[i];
+            }
+        }
+    }
+
+    //oldEl().replaceWith(newEl())
+
+    // вариант 2
+    const origEl = document.querySelectorAll('.product');
+    const newElem = origEl[origEl.length - 1].cloneNode(true);
+    newElem.querySelector('div img').src = 'https://loremflickr.com/200/300/goods?lock=37';
+    newElem.querySelector('div').textContent = 'Товар 4';
+
+    const oldElem = origEl[origEl.length - 1];
+    oldElem.replaceWith(newElem);
+    
+
+    
+    
+
+
+  /*
+  5. По истечении 2 секунд с момента открытия страницы первый товар должен быть
+  удален из html.
+   */
+
+    setTimeout(() => {
+        const remEl = document.querySelector('div');
+        remEl.remove(remEl)
+    }, 2000);
+   
+
+   
+
+
+</script>
+</body>
+</html>
