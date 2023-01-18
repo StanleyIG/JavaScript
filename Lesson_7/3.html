@@ -30,7 +30,7 @@
         for (const i of numStr) {
             arr.push(Number.parseInt(i))
         }
-        return arr.sort((a, b) => b - a).join('')
+        return Number.parseInt(arr.sort((a, b) => b - a).join(''));
         
     }
 

@@ -10,10 +10,9 @@
       margin-top: 40px;
     }
 
-      .product {
-          float: left;
+       .product {
+           float: left;
           margin-right: 20px;
-          margin-top: 40px
       }
   </style>
 </head>
@@ -40,13 +39,9 @@
   class Product {
     constructor(id, name, price, imageUrl) {
         this.id = id;
-        //return this;
         this.name = name;
-        //return this;
         this.price = price;
-        //return this;
         this.imageUrl = imageUrl;
-        //return this;
     }
 
     /**
@@ -54,11 +49,13 @@
      */
     getProductMarkup() {
         return `
-            <div class="products">${this.name}</div>
+        <div class="product">
+            <div>${this.name}</div>
             <img src="${this.imageUrl}" alt="">
-            <div class="products">Цена: <span>${this.price}</span> р.</div>
+            <div>Цена: <span>${this.price}</span> р.</div>
             <a href="https://example.com/producs/${this.id}">Подробнее</a>
-            `;
+        </div>
+      `;
 
         /*
         `
@@ -97,15 +94,9 @@
       return;
     }
     productsEl.innerHTML = products[event.target.dataset.type]
-        .map(product => product.getProductMarkup());
-      //console.log(event.target.dataset.type)
+        .map(product => product.getProductMarkup()).join('')
+      console.log(productsEl.innerHTML)
   });
-
-
-    //const pr = new Product(6, "Телевизор 1", "4314", "https://loremflickr.com/200/300/goods?lock=36")
-    //console.log(products.phones.map(product => product.getProductMarkup()))
-    //productsEl.innerHTML = pr.getProductMarkup()
-
 
     /*
      * <div class="product">

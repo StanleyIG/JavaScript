@@ -61,14 +61,15 @@
     };
 
     /* эта функция на всякий случай, возможно я не совсем понял суть второй части 1 - го задания.
-    const divEl = document.querySelector('div.text') 
+     
     function fn({ T1, X6, H99 }) {
         const result = `${T1} ${X6} ${H99}`
         divEl.textContent = result 
     }
     */
-    
+  
 
+    const divEl = document.querySelector('div.text')
     const navLinkEls = document.querySelectorAll('.nav-link');
     navLinkEls.forEach((navLinkEl) => {
         navLinkEl.addEventListener('click', () => {
@@ -76,15 +77,18 @@
                 el.classList.toggle('active', navLinkEl === el)
                 //console.log(navLinkEl.parentElement.dataset.text)
             });
+            /*
             if (navLinkEl.parentElement.dataset.text === Object.keys(panelText)[0]) {
                 divEl.textContent = `${panelText.T1}`;
             }
             else if (navLinkEl.parentElement.dataset.text === Object.keys(panelText)[1]) {
-                divEl.textContent = `${panelText.T1} ${panelText.X6}`;
+                divEl.textContent = `${panelText.X6}`;
             }
             else if (navLinkEl.parentElement.dataset.text === Object.keys(panelText)[2]) {
-                divEl.textContent = `${panelText.T1} ${panelText.X6} ${panelText.H99}`;
+                divEl.textContent = `${panelText.H99}`;
             }
+            */
+            divEl.textContent = panelText[event.target.parentElement.dataset.text];
         });
     });
 
